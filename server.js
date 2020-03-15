@@ -1,12 +1,17 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const router = require('./components/message/network');
+const router = require('./network/routes');
+
+//
+//const router = require('./components/message/network');
 
 // cuidado con el orden!! app.use(router) ira al final despues del resto de middelware
 var app = express();
 app.use(express.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // app.use(express.json()); (se puede usar indistintamente)
-app.use(router);
+//app.use(router);
+
+router(app);
 
 
 // para indicarle a NODe dodne vamos a servir las paginas 
